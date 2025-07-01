@@ -1,10 +1,10 @@
 # Simple Email Server
 
-[![Tests](https://github.com/yourusername/simple-email-server/actions/workflows/test.yml/badge.svg)](https://github.com/yourusername/simple-email-server/actions/workflows/test.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/simple-email-server)](https://goreportcard.com/report/github.com/yourusername/simple-email-server)
+[![Tests](https://github.com/tpdoyle87/simple-email-server/actions/workflows/test.yml/badge.svg)](https://github.com/tpdoyle87/simple-email-server/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tpdoyle87/simple-email-server)](https://goreportcard.com/report/github.com/tpdoyle87/simple-email-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/yourusername/simple-email-server)](https://go.dev/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/yourusername/simple-email-server)](https://hub.docker.com/r/yourusername/simple-email-server)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/tpdoyle87/simple-email-server)](https://go.dev/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/tpdoyle87/simple-email-server)](https://hub.docker.com/r/tpdoyle87/simple-email-server)
 
 A high-performance, self-hosted email server written in Go. Send emails from your applications without relying on third-party services like SendGrid or AWS SES.
 
