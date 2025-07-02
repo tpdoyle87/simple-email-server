@@ -1,0 +1,40 @@
+# Production configuration template
+# This file is used as a template for production deployments
+# Environment variables will be substituted at runtime
+
+server:
+  hostname: "${SERVER_HOSTNAME}"
+  listen_address: "${SMTP_LISTEN_ADDRESS:-0.0.0.0:587}"
+  tls:
+    enabled: true
+    cert_file: "${TLS_CERT_FILE:-/certs/cert.pem}"
+    key_file: "${TLS_KEY_FILE:-/certs/key.pem}"
+    auto_tls: ${AUTO_TLS:-false}
+
+api:
+  listen_address: "${API_LISTEN_ADDRESS:-127.0.0.1:8080}"
+  auth_token: "${API_AUTH_TOKEN}"
+  tls:
+    enabled: false
+
+queue:
+  storage_path: "/data/queue"
+  max_queue_size: ${QUEUE_MAX_SIZE:-10000}
+  max_retry: ${QUEUE_MAX_RETRY:-5}
+  retry_delay: "${QUEUE_RETRY_DELAY:-5m}"
+  batch_size: ${QUEUE_BATCH_SIZE:-100}
+
+delivery:
+  workers: ${DELIVERY_WORKERS:-20}
+  dns_cache_ttl: "${DNS_CACHE_TTL:-5m}"
+  connection_timeout: "${CONNECTION_TIMEOUT:-30s}"
+  connection_pool_size: ${CONNECTION_POOL_SIZE:-100}
+
+limits:
+  max_recipients: ${MAX_RECIPIENTS:-100}
+  max_message_size: ${MAX_MESSAGE_SIZE:-26214400}
+  rate_limit: "${RATE_LIMIT:-100/minute}"
+
+logging:
+  level: "${LOG_LEVEL:-info}"
+  file: "${LOG_FILE:-/logs/emailserver.log}"

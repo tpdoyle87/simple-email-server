@@ -1,0 +1,32 @@
+# Development configuration
+# WARNING: This configuration is for development only!
+
+server:
+  hostname: "localhost"
+  listen_address: "127.0.0.1:2525"
+  tls:
+    enabled: false
+
+api:
+  listen_address: "127.0.0.1:8080"
+  auth_token: "dev-token-do-not-use-in-production"
+
+queue:
+  max_queue_size: 1000
+  max_retry: 3
+  retry_delay: "1m"
+  batch_size: 10
+
+delivery:
+  workers: 5
+  dns_cache_ttl: "1m"
+  connection_timeout: "10s"
+
+limits:
+  max_recipients: 10
+  max_message_size: 1048576  # 1MB
+  rate_limit: "10/minute"
+
+logging:
+  level: "debug"
+  file: ""  # Log to stdout

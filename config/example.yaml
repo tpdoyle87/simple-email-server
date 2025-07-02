@@ -1,0 +1,89 @@
+# Simple Email Server Configuration Example
+# Copy this file to config.yaml and modify as needed
+
+# SMTP server configuration
+server:
+  # Hostname for the SMTP server (required)
+  hostname: "mail.example.com"
+  
+  # Address to listen on (default: 0.0.0.0:587)
+  listen_address: "0.0.0.0:587"
+  
+  # TLS configuration
+  tls:
+    # Enable TLS/STARTTLS support
+    enabled: true
+    
+    # Path to certificate file (required if TLS enabled)
+    cert_file: "/path/to/cert.pem"
+    
+    # Path to private key file (required if TLS enabled)
+    key_file: "/path/to/key.pem"
+    
+    # Enable automatic TLS via Let's Encrypt
+    auto_tls: false
+
+# API server configuration
+api:
+  # Address for API to listen on (default: 127.0.0.1:8080)
+  listen_address: "127.0.0.1:8080"
+  
+  # Authentication token (required)
+  # Generate with: openssl rand -base64 32
+  auth_token: "your-secret-token-here"
+  
+  # Optional TLS for API
+  tls:
+    enabled: false
+    cert_file: ""
+    key_file: ""
+
+# Email queue configuration
+queue:
+  # Path to store queue data (for persistent queue)
+  storage_path: "/var/lib/emailserver/queue"
+  
+  # Maximum number of emails in queue (default: 10000)
+  max_queue_size: 10000
+  
+  # Maximum retry attempts (default: 5)
+  max_retry: 5
+  
+  # Delay between retries (default: 5m)
+  retry_delay: "5m"
+  
+  # Batch size for processing (default: 100)
+  batch_size: 100
+
+# Email delivery configuration
+delivery:
+  # Number of concurrent delivery workers (default: 20)
+  workers: 20
+  
+  # DNS cache TTL (default: 5m)
+  dns_cache_ttl: "5m"
+  
+  # Connection timeout for SMTP delivery (default: 30s)
+  connection_timeout: "30s"
+  
+  # Connection pool size per destination (default: 100)
+  connection_pool_size: 100
+
+# Limits and restrictions
+limits:
+  # Maximum recipients per email (default: 100)
+  max_recipients: 100
+  
+  # Maximum message size in bytes (default: 25MB)
+  max_message_size: 26214400  # 25MB
+  
+  # Rate limiting (format: "count/duration")
+  rate_limit: "100/minute"
+
+# Logging configuration
+logging:
+  # Log level: debug, info, warn, error (default: info)
+  level: "info"
+  
+  # Log file path (empty for stdout)
+  file: "/var/log/emailserver/emailserver.log"

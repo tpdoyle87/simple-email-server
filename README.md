@@ -26,9 +26,9 @@ A high-performance, self-hosted email server written in Go. Send emails from you
 docker run -d \
   -p 587:587 \
   -p 127.0.0.1:8080:8080 \
-  -v ./config.yaml:/app/config.yaml \
+  -v ./config.yaml:/config/config.yaml \
   -e API_AUTH_TOKEN=your-secret-token \
-  yourusername/simple-email-server
+  tpdoyle87/simple-email-server
 ```
 
 ### Using Kamal
@@ -48,7 +48,7 @@ See [KAMAL.md](KAMAL.md) for detailed instructions.
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/simple-email-server
+git clone https://github.com/tpdoyle87/simple-email-server
 cd simple-email-server
 
 # Build
@@ -110,7 +110,7 @@ curl http://localhost:8080/status/email-id \
 ### Go
 
 ```go
-import "github.com/yourusername/simple-email-server/pkg/client"
+import "github.com/tpdoyle87/simple-email-server/pkg/client"
 
 client := client.New("http://localhost:8080", "your-secret-token")
 err := client.Send(&client.Email{

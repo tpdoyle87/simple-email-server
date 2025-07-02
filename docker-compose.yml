@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  emailserver:
+    build: .
+    container_name: simple-email-server
+    restart: unless-stopped
+    ports:
+      - "587:587"      # SMTP port
+      - "127.0.0.1:8080:8080"  # API port (only accessible from localhost)
+    volumes:
+      - ./config.yaml:/config/config.yaml:ro
+      - email-data:/data
+      - email-logs:/logs
+    environment:
+      - TZ=UTC
+    networks:
+      - email-network
+    cap_add:
+      - NET_BIND_SERVICE  # Allow binding to port 587
+
+volumes:
+  email-data:
+    driver: local
+  email-logs:
+    driver: local
+
+networks:
+  email-network:
+    driver: bridge
